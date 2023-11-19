@@ -1,26 +1,18 @@
-<html>
-    <head>
-	{% load static %}
-	<link rel="stylesheet" href="{% static 'notes/css/style.css' %}">
-    </head>
-    <body>
-        <div class="pagecontent">
-            <div class="menu">
-                <div class="menu-item"><a href="https://t.me/edwak97" target="_blank">About</a></div>
-                <div class="menu-item"><a href="https://t.me/edwak97" target="_blank">Notes</a></div>
-                <div class="menu-item"><a href="https://t.me/edwak97" target="_blank">Sandbox</a></div>
-                <div class="menu-item"><a href="https://t.me/edwak97" target="_blank">Gaming</a></div>
-            </div>
-            <div class="notelist">
-		{% for note in notesItems %}
+{% extends 'base.html' %}
+
+{% block title %}Заметки{% endblock %}
+
+{% block baseblock %}
+<div class="notelist">
+	{% for note in notesItems %}
                 <div class="note">
-			<div class="header"><h1>{{note.header}}</h1></div>
-                    <div class="notecontent">
+			<div class="header">
+				<h1>{{note.header}}</h1>
+			</div>
+ 			<div class="notecontent">
 			    {{note.body}}
-                    </div>
+			 </div>
                 </div>
-		{% endfor %}
-            </div>
-        </div>
-    </body>
-</html>
+	{% endfor %}
+</div>
+{% endblock %}
