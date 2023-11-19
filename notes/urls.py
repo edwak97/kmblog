@@ -19,5 +19,5 @@ from . import views
 
 urlpatterns = [
     path('', views.printNotes),
-    path('note<int:id>', views.printNote, name='note')
+    # path('note<int:id>', views.printNote, name='note')
 ]

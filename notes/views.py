@@ -7,13 +7,13 @@ from django.core.exceptions import ObjectDoesNotExist
 
 #Views
 def printNotes(request):
-    return render(request, 'notes/notes.html', context = {'notesItems': list(NoteRecord.objects.all())})
+    return render(request, 'notes/notes.html', context = {'notesItems': NoteRecord.objects.all()})
    # return HttpResponse("There are supposed to be notes")
-def printNote(request, id:int):
-    try:
-        note = NoteRecord.objects.get(id=id)
-        return render(request, 'notes/note.html', context={'header':note.header, 'body':note.body})
-    except ObjectDoesNotExist:
-        return HttpResponseNotFound('Note nod found')
+# def printNote(request, id:int):
+#     try:
+#         note = NoteRecord.objects.get(id=id)
+#         return render(request, 'notes/note.html', context={'header':note.header, 'body':note.body})
+#     except ObjectDoesNotExist:
+#         return HttpResponseNotFound('Note not found')
 #methods
 
