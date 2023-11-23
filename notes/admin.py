@@ -2,4 +2,13 @@ from django.contrib import admin
 from .models import NoteRecord
 
 # Register your models here.
-admin.site.register(NoteRecord)
+
+#they say it can be replaced with:
+#@admin.register(NoteRecord.NoteRecordAdmin)
+class NoteRecordAdmin(admin.ModelAdmin):
+    list_display = ['id', 'header', 'body', 'access_show', 'access_comment']
+    list_editable = ['header', 'body']
+
+admin.site.register(NoteRecord, NoteRecordAdmin)
+
+
