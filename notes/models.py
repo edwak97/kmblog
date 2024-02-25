@@ -17,7 +17,7 @@ class NoteComment(models.Model):
     author_name = models.CharField(max_length=20)
     body = models.CharField(max_length=256)
     release_date = models.DateField(auto_now_add=True)
-    note = models.ForeignKey(NoteRecord, on_delete=models.CASCADE)
+    note = models.ForeignKey(NoteRecord, on_delete=models.CASCADE, related_name='comments')
 
     def __str__(self):
         return f'{self.author_name[:5]} {self.body[:5]}'
