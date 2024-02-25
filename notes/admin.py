@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import NoteRecord
+from .models import NoteRecord, NoteComment
 
 # Register your models here.
 
@@ -10,5 +10,5 @@ class NoteRecordAdmin(admin.ModelAdmin):
     list_editable = ['header', 'body']
 
 admin.site.register(NoteRecord, NoteRecordAdmin)
-
+admin.site.register(NoteComment)
 
