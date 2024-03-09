@@ -19,5 +19,7 @@ from . import views
 
 urlpatterns = [
     path('', views.printNotes),
+    path('addcomment', views.addComment),
+    path('addcommentform', views.addCommentForm)
     # path('note<int:id>', views.printNote, name='note')
 ]
