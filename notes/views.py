@@ -1,34 +1,33 @@
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render
 from .models import *
-from django.template.loader import render_to_string
-from django.urls import reverse
-from django.core.exceptions import ObjectDoesNotExist
+#from django.template.loader import render_to_string
+#from django.urls import reverse
+#from django.core.exceptions import ObjectDoesNotExist
+from .forms import CommentForm
+from django.views import View
+from django.views.generic import ListView
 
 #Views
-def printNotes(request):
-    return render(request, 'notes/notes.html', context = {'notesItems': NoteRecord.objects.all()})
 
-def addCommentForm(request):
-    return render(request, 'notes/addcommentform.html')
+class addCommentForm(View):
+    
+    def get(self, request):
+        form = CommentForm()
+        return render(request, 'notes/addcommentform.html', context={'form':form})
+    
+    def post(self, request):    
+        form = CommentForm(request.POST)
+        
+        if not form.is_valid():
+            return render(request, 'notes/addcommentform.html', context={'form':form})
+        
+        form.save()
+        return HttpResponseRedirect('')
 
-def addComment(request):
-    if request.method == 'POST':
-        author_name = request.POST['name']
-        body = request.POST['body']
-        note_id = request.POST['note_id']
-
-        note = NoteRecord.objects.get(id=note_id)
-        note.comments.add(NoteComment(author_name = author_name, body = body), bulk = False)
-
-        return render(request, 'notes/commentadded.html') 
-
-   # return HttpResponse("There are supposed to be notes")
-# def printNote(request, id:int):
-#     try:
-#         note = NoteRecord.objects.get(id=id)
-#         return render(request, 'notes/note.html', context={'header':note.header, 'body':note.body})
-#     except ObjectDoesNotExist:
-#         return HttpResponseNotFound('Note not found')
-#methods
+class PrintNotesView(ListView):
+    template_name = 'notes/notes.html'
+    model = NoteRecord
+    context_object_name = 'notesItems'
+    paginate_by = 4
 

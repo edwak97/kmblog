@@ -3,14 +3,15 @@
 {% block title %}Оставить комментарий{% endblock %}
 
 {% block baseblock %}
-<form action='/notes/addcomment' method='post'>
+<form action='/notes/addcommentform' method='post'>
 	{% csrf_token %}
-	<label for='noteid'>Id заметки:</label><br>
-	<input type='text' id='noteid' name='note_id'><br>
-	<label for='comment'>Текст комментария</label><br>
-	<input type='text' id ='comment' name='body'><br>
-	<label for'name'>Как вас зовут?</label><br>
-	<input type="text" id="name" name="name"><br>
+	{% for field in form %}
+	<div>
+		{{field.label_tag}}
+		{{field.errors}}
+		{{field}}
+	</div>
+	{% endfor %}
 	<button>Try it!</button>
 </form>
 {% endblock %}
