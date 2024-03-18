@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
     <head>
 	<meta charset="UTF-8">
 	<title>{%block title%}{%endblock%}</title>
@@ -8,8 +8,13 @@
     </head>
     <body>
         <div class="pagecontent">
-        {% include 'includes/menu.html' %}
-	    {%block baseblock%}{%endblock%}
-	    </div>
+		<div class="leftside">
+			{% include 'includes/menu.html' %}
+		</div>
+		<div class="rightside">
+			{%block baseblock%}{%endblock%}
+		</div>
+	</div>
     </body>
 </html>
+

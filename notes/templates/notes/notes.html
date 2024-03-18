@@ -15,15 +15,19 @@
                 </div>
 	{% endfor %}
 </div>
-<div class="pagination-nav">
-	<nav>
-		{% if page_obj.has_previous %}
-			<a href="?page={{page_obj.previous_page_number}}">&lt;</a>
-		{% endif %}
-		{% if page_obj.has_next %}
-			<a href="?page={{page_obj.next_page_number}}">&gt;</a>
-		{% endif %}
-	</nav>
+<nav>
+<div class="pagination">
+	{% if page_obj.has_previous %}
+		<div class="menu-item">
+			<a href="?page={{page_obj.previous_page_number}}">&lt;&lt;</a>
+		</div>
+	{% endif %}
+	{% if page_obj.has_next %}
+		<div class="menu-item">
+			<a href="?page={{page_obj.next_page_number}}">&gt;&gt;</a>
+		</div>
+	{% endif %}
 </div>
+</nav>
 {% endblock %}
 
