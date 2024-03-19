@@ -18,6 +18,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.PrintNotesView.as_view()),
-    path('addcommentform', views.addCommentForm.as_view())
-]
+    path('', views.NotePageView.as_view()),
+    path('addcommentform', views.addCommentForm.as_view()),
+    path('done', views.CommentDone.as_view()),
+    path('note<int:pk>', views.NoteOneView.as_view())
+ ]
+

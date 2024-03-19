@@ -9,7 +9,7 @@ class NoteRecord(models.Model):
     modified_date = models.DateField(auto_now=True)
     access_show = models.PositiveSmallIntegerField(default=0)
     access_comment = models.PositiveSmallIntegerField(default=0)
-    
+    hidden = models.BooleanField(default=False)  
     def __str__(self):
         return f'{self.id} {self.header[:5]}: {self.body[:5]}'
 

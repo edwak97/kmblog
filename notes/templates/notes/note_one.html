@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}{{note.header}}{% endblock %}
+
+{% block baseblock %}
+<p>
+	{{note.id}} &nbsp;<br>{{note.header}}<br>{{note.body}}
+</p>
+{% endblock %}
+
